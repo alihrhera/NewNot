@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/Show"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.087"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.032" />
+
+    <LinearLayout
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="252dp"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toTopOf="parent"
+      >
+
+        <Button
+            android:onClick="Insert"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="اضافه" />
+
+        <Button
+            android:onClick="Update"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="تعديل" />
+
+        <Button
+            android:onClick="Delete"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="حذف" />
+
+        <Button
+            android:onClick="show"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="عرض" />
+
+    </LinearLayout>
+</android.support.constraint.ConstraintLayout>
