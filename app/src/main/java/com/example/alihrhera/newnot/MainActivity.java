@@ -1,5 +1,6 @@
 package com.example.alihrhera.newnot;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -18,10 +19,22 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Show=findViewById(R.id.Show);
         dataBas=new MyDataBas(MainActivity.this);
+        show();
 
+            findViewById(R.id.addnew).setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    startActivity(new Intent(MainActivity.this,AddNewANot.class));
+                }
+            });
 
     }
-    public void show(View v){
+
+
+
+
+
+    public void show(){
 
         ArrayList <String> list=dataBas.AllData();
         if(list.size()>0) {
@@ -30,18 +43,11 @@ public class MainActivity extends AppCompatActivity {
                 Show.append(list.get(i)+"\n");
 
             }
+        }else {
+            Show.setText("No Not's yet");
+
+
         }
     }
-    public void Delete(View v){
-        boolean delete= dataBas.deleterow();
-        Show.setText(delete+"");
-    }
-    public void Insert(View v){
-       boolean insert= dataBas.Insert();
-        Show.setText(insert+"");
-    }
-    public void Update(View v){
-        boolean update =dataBas.UpdateRow();
-        Show.setText(update+"");
-    }
+
 }

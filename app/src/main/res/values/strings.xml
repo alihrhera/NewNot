@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">New Not</string>
+    <string name="title_activity_show_all_nots">ShowAllNots</string>
+    <string name="title_activity_main2">Main2Activity</string>
 </resources>

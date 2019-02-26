@@ -11,7 +11,7 @@ import java.util.ArrayList;
 
 public class MyDataBas {
     final  private String  DATABASE_NAME="MyNotes.db";
-    final  private int DBversion=1;
+    final  private int DBversion= 2; // new
     private DatabaseHelper database;
     private SQLiteDatabase db;
     private String  TABLENAME="MyNots";
@@ -22,9 +22,10 @@ public class MyDataBas {
     }
 
 
-    public boolean Insert(){
+    public boolean Insert(String not,int color){
         ContentValues conv = new ContentValues();
-        conv.put("Content", "first test");
+        conv.put("Content", not);
+        conv.put("color", color);
         long isdone=db.insert(TABLENAME, null, conv);
         return isdone>-1;
     }
@@ -75,6 +76,7 @@ public class MyDataBas {
         @Override
         public void onUpgrade (SQLiteDatabase db, int oldVersion, int newVersion) {
 
+            db.execSQL("ALTER TABLE MyNots ADD column color INTEGER");
         }
     }
 }
