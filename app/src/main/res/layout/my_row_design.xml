@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="100dp"
+    android:id="@+id/backView"
+    android:background="@drawable/blue_bg"
+    >
+    <TextView
+        android:textSize="24sp"
+        android:textColor="@color/black"
+        android:paddingEnd="40dp"
+        android:paddingStart="40dp"
+        android:id="@+id/contentView"
+        android:layout_width="match_parent"
+        android:layout_height="100dp" />
+
+</RelativeLayout>

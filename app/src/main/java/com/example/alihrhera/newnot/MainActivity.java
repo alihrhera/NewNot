@@ -3,23 +3,26 @@ package com.example.alihrhera.newnot;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
-
     private TextView Show;
     private MyDataBas dataBas;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Show=findViewById(R.id.Show);
+        //Show=findViewById(R.id.Show);
         dataBas=new MyDataBas(MainActivity.this);
-        show();
 
             findViewById(R.id.addnew).setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -28,26 +31,24 @@ public class MainActivity extends AppCompatActivity {
                 }
             });
 
+
+        ShowAllData();
+    }
+
+    private void ShowAllData(){
+        RecyclerView show=findViewById(R.id.Show);
+        show.setLayoutManager(new LinearLayoutManager(this));
+        ArrayList<MyNot> list=dataBas.AllData();
+        MyAdpter adapter=new MyAdpter(list,MainActivity.this);
+        show.setAdapter(adapter);
     }
 
 
 
 
-
-    public void show(){
-
-        ArrayList <String> list=dataBas.AllData();
-        if(list.size()>0) {
-            Show.setText("");
-            for (int i = 0; i < list.size(); i++) {
-                Show.append(list.get(i)+"\n");
-
-            }
-        }else {
-            Show.setText("No Not's yet");
-
-
-        }
+    @Override
+    protected void onResume() {
+        ShowAllData();
+        super.onResume();
     }
-
 }

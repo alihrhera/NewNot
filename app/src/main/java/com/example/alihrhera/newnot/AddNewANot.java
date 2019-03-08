@@ -12,6 +12,7 @@ public class AddNewANot extends AppCompatActivity {
     private MyDataBas dataBas; //
     private EditText getNot;
     private int color;
+    private RadioGroup colors;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -20,7 +21,7 @@ public class AddNewANot extends AppCompatActivity {
         dataBas=new MyDataBas(AddNewANot.this);
         getNot=findViewById(R.id.getNot);
 
-        RadioGroup colors=findViewById(R.id.colors);
+         colors=findViewById(R.id.colors);
         colors.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
@@ -51,6 +52,25 @@ public class AddNewANot extends AppCompatActivity {
                 String not=getNot.getText().toString();
                 Log.e("E",""+not);
                 if (!not.isEmpty()&&not.length()>2){
+                    int id=colors.getCheckedRadioButtonId();
+                    /* i will make for every color code
+                    red =3
+                    yellow=2
+                    blue=1
+                     */
+                    switch (id){
+                        case R.id.blue_btn :
+                            color=1;
+                            break;
+                        case R.id. yellow_btn:
+                            color=2;
+                            break;
+                        case R.id. red_btn:
+                            color=3;
+                            break;
+                    }
+
+
                     if(dataBas.Insert(not,color)){
                       finish();
                     }

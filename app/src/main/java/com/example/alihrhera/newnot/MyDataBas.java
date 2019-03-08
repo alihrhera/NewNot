@@ -8,6 +8,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class MyDataBas {
     final  private String  DATABASE_NAME="MyNotes.db";
@@ -19,6 +20,8 @@ public class MyDataBas {
     public MyDataBas(Context context){
         database=new DatabaseHelper(context);
         db=database.getReadableDatabase();
+      //  db.execSQL("delete from "+ TABLENAME);
+
     }
 
 
@@ -44,19 +47,24 @@ public class MyDataBas {
     }
 
 
-    public ArrayList<String>  AllData(){
-        ArrayList<String> list=new ArrayList();
+    public ArrayList<MyNot> AllData(){
+        ArrayList<MyNot>  reternudlist=new ArrayList();
         Cursor crs = db.rawQuery("SELECT * FROM "+TABLENAME, null);
         crs.moveToFirst();
         while (!crs.isAfterLast()) {
-            String data=crs.getString(crs.getColumnIndex("Content"))+" "
-                    +crs.getInt(crs.getColumnIndex("ID"));
-            list.add(data);
+            MyNot not=new MyNot();
+            not.setContent(crs.getString(crs.getColumnIndex("Content")));
+            not.setColor(crs.getInt(crs.getColumnIndex("color")));
+            not.setId(crs.getInt(crs.getColumnIndex("ID")));
+            reternudlist.add(not);
             crs.moveToNext();
         }
         crs.close();
-        return list;
+        return reternudlist;
     }
+
+
+
 
 
 
